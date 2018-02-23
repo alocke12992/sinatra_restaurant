@@ -20,6 +20,11 @@ class Items < Sinatra::Base
     erb :'/users/items'
   end
 
+  get "/users/home" do
+    @allItems = Item.all
+    erb :'/users/home'
+  end
+
   post "/users/items" do
     Item.create(
       id: session[:id],
