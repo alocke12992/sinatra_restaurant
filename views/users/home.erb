@@ -6,11 +6,14 @@
         <div class="card-body" style="
         background-color: lightgrey;
         max-height: 60%;
+        min-height: 60%;
         width: 70%; border-radius: 10%;
         padding: 0;
         margin: 50px auto 0px auto;">
         <img class="card-img-top" src="<%= item.image %>" alt="Card image cap" style="
-        max-width: 70%;
+        max-width: 60%;
+        max-height: 60%;
+        min-height: 60%;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -20,7 +23,7 @@
         <h4 class="card-title">
           <%= item.title %>
         </h4>
-        <p class="card-text">
+        <p class="card-text" style="font-size: 12px;">
           <%= item.description %>
         </p>
       </div>
