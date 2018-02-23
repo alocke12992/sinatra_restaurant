@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :description
       t.string :image
-      t.timestamps
+      t.timestamp
     end
   end
   def self.down

@@ -19,57 +19,72 @@ end
     redirect '/users/home'
   end
 
-  # get '/sessions/login' do 
-  #   erb :login
-  # end 
 
-  # post '/sessions' do 
-  # end 
 
-  # get '/sessions/logout' do 
-  #   erb :session
-  # end 
-
-  get '/users/home' do 
-    @user = User.find(session[:id]) 
-    @items = Item.all
-    erb :'/users/uhome'
+  get '/sessions/login' do 
+    erb :'/sessions/login'
   end 
 
 
+  post '/sessions' do 
+    @user = User.find_by(
+      email: params["email"], 
+      password: params["password"])
+      session[:id] = @user.id
+    redirect '/users/home'
+  end 
+
+   get '/sessions/logout' do 
+   session.clear
+   redirect '/'
+  end 
+
+ 
+
+  get '/users/home' do 
+    @user = User.find(session[:id]) 
+    erb :'/users/home'
+  end 
+
+ 
+
+  get "/users/items" do
+    
+    erb :'/users/items'
+  end
+
 # IMPORTED ROUTES 
-# get "/items/new" do
-#     erb :new
-#   end
+  get "/users/items/new" do
+    erb :'/users/new'
+  end
 
-#   get "/items/:id/edit" do
-#     @item = Item.find(params[:id])
-#     erb :edit
-#   end
+  get "/users/items/:id/edit" do
+    @items = Item.find(params[:id])
+    erb :'/users/edit'
+  end
 
-#   put "/items/:id" do
-#     item = Item.find(params[:id])
-#     Item.update({title: params[:title], description: params[:description], image: params[:image]})
-#     redirect "/items"
-#   end
+  put "/users/items/:id" do
+    @items = Item.find(params[:id])
+    Item.update({title: params[:title], description: params[:description], image: params[:image]})
+    redirect "/users/items"
+  end
 
-#   get "/items" do
-#     @items = Item.all
-#     erb :items
-#   end
 
-#   post "/items" do
-#     Item.create(
-#       title: params[:title],
-#       description: params[:description],
-#       image: params[:image]
-#     )
-#     redirect "/items"
-#   end
-#   delete '/items/:id' do |id|
-#     Item.find(params[:id]).destroy
-#     redirect "/items"
-#   end
+  post "/items" do
+  @items = Item.new(
+      title: params[:title],
+      description: params[:description],
+      image: params[:image]
+    )
+    .save
+    session[:id] = @user.id
+    redirect "/users/items"
+  end
+  
+delete '/users/items/:id' do |id|
+    @items = Item.find(params[:id]).destroy
+    redirect "/users/items"
+  end
 
 
 end
