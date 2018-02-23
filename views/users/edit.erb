@@ -1,0 +1,16 @@
+<h1 class="center">Edit
+  <%= @item.title %>
+</h1>
+<form method="POST" action="/users/items/<%= @item.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="input-field">
+    <input id="image" type="hidden" name="image" value="<%= @item.image %>">
+    <input id="title" required name="title" value="<%= @item.title %>" />
+    <label class="active" for="title">Title</label>
+  </div>
+  <div class="input-field">
+    <textarea class="materialize-textarea" id="desc" required name="description"><%= @item.description %></textarea>
+    <label for="desc" class="active">Description</label>
+  </div>
+  <button class="btn right" type="submit">Save</button>
+</form>
