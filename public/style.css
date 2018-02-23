@@ -1,0 +1,32 @@
+@import 'bootstrap.min.css';
+ul.nav.nav-pills {
+  text-align: right !important;
+}
+
+.nav-pills>li {
+  float: none !important;
+  display: inline-block !important;
+}
+
+body {
+  background-image: url("https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.card {
+  margin: 0 auto !important;
+  /* Added */
+  float: none !important;
+  /* Added */
+  margin-bottom: 10px !important;
+  /* Added */
+}
+.custom{
+  transform: scale(0.9);
+  transition: all .2s ease-in-out;
+}
+.custom:hover{
+transform: scale(1.001);
+}
