@@ -16,12 +16,13 @@ class Items < Sinatra::Base
   end
 
   get "/users/items" do
-    @items = Item.all
+    @items = Item.where(:id => session[:id]).all
     erb :'/users/items'
   end
 
   post "/users/items" do
     Item.create(
+      id: session[:id],
       title: params[:title],
       description: params[:description],
       image: params[:image]
